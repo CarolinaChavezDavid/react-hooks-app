@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useCounter } from '../hooks/useCounter'
 import { ShowIncrement } from './ShowIncrement'
 
 export const CallbackHook = () => {
-    const {counter, setCounter} = useCounter();
+    
+    const [counter, setCounter] = useState( 10 );
 
-    const incrementValue = () => {
-        setCounter( counter + 1 )
+    const incrementValue = useCallback(
+      () => {
+        setCounter( (value) => value + 1)
+      },
+      [],
+    )
+    
 
-    }
+    //const incrementValue = () => {
+    //    setCounter( counter + 1 )
+    //}
 
   return (
     <>
